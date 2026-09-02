@@ -171,6 +171,25 @@ const products = [
         emoji: "🍰"
     },
 
+    {
+        id: 9,
+
+        name: "Bolo fatia SNICKERS ",
+
+        description:
+            "Sabor: SNICKERS.",
+
+        price: 15,
+
+        category: "bolos",
+
+        categoryName: "bolos",
+
+        image: "snickers.jpg",
+
+        emoji: "🍰"
+    },
+
 
 
     /*
