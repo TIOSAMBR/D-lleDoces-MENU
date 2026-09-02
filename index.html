@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Délle Doces | Cardápio</title>
+
+    <meta name="description"
+        content="Cardápio online Délle Doces. Escolha seus doces favoritos e faça seu pedido pelo WhatsApp.">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍰</text></svg>">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Great+Vibes&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ==============================
+         TOPO / CAPA
+    =============================== -->
+
+    <header class="hero">
+
+        <div class="hero-flower flower-top-left">✿</div>
+        <div class="hero-flower flower-top-right">✿</div>
+
+        <div class="hero-content">
+
+            <div class="logo-wrapper">
+                <img src="logo-referencia.png"
+                     alt="Délle Doces por Débora Mendes"
+                     class="logo">
+            </div>
+
+            <p class="hero-subtitle">
+                Doces feitos com carinho para deixar seus momentos ainda mais especiais.
+            </p>
+
+            <a href="#cardapio" class="btn-ver-cardapio">
+                Ver cardápio
+                <span>↓</span>
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==============================
+         CONTEÚDO PRINCIPAL
+    =============================== -->
+
+    <main id="cardapio">
+
+        <section class="menu-section">
+
+            <div class="section-title">
+
+                <span class="small-title">
+                    NOSSO
+                </span>
+
+                <h1>
+                    Cardápio
+                </h1>
+
+                <div class="title-line">
+                    <span></span>
+                    <i>✿</i>
+                    <span></span>
+                </div>
+
+                <p>
+                    Escolha seus favoritos
+                </p>
+
+            </div>
+
+
+            <!-- ==============================
+                 CATEGORIAS
+            =============================== -->
+
+            <div class="categories">
+
+                <button class="category active" data-category="todos">
+                    Todos
+                </button>
+
+                <button class="category" data-category="bolos">
+                    Bolos
+                </button>
+
+                <button class="category" data-category="doces">
+                    Doces
+                </button>
+
+                <button class="category" data-category="combos">
+                    Combos
+                </button>
+
+            </div>
+
+
+            <!-- ==============================
+                 PRODUTOS
+            =============================== -->
+
+            <div id="productsGrid" class="products-grid">
+                <!-- Produtos carregados pelo JavaScript -->
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             INSTAGRAM
+        =============================== -->
+
+        <section class="instagram-section">
+
+            <div class="instagram-decoration">
+                ✿
+            </div>
+
+            <span>
+                ACOMPANHE A GENTE
+            </span>
+
+            <h2>
+                Délle Doces
+            </h2>
+
+            <p>
+                Siga nosso Instagram e acompanhe<br>
+                nossas novidades.
+            </p>
+
+            <a
+                href="https://www.instagram.com/delledoces_d/"
+                target="_blank"
+                class="instagram-btn">
+
+                <span>◎</span>
+                @delledoces_d
+
+            </a>
+
+        </section>
+
+
+        <!-- ==============================
+             RODAPÉ
+        =============================== -->
+
+        <footer>
+
+            <div class="footer-flower">
+                ✿
+            </div>
+
+            <h3>
+                Délle doces
+            </h3>
+
+            <p>
+                POR DÉBORA MENDES
+            </p>
+
+            <small>
+                Feito com carinho ♡
+            </small>
+
+        </footer>
+
+    </main>
+
+
+    <!-- ==============================
+         BOTÃO DO CARRINHO
+    =============================== -->
+
+    <button id="cartButton" class="cart-button">
+
+        <div class="cart-icon">
+            🛒
+        </div>
+
+        <div class="cart-info">
+
+            <span>
+                Meu pedido
+            </span>
+
+            <strong id="cartCount">
+                0 itens
+            </strong>
+
+        </div>
+
+        <div class="cart-total" id="cartTotal">
+            R$ 0,00
+        </div>
+
+    </button>
+
+
+    <!-- ==============================
+         MODAL DO CARRINHO
+    =============================== -->
+
+    <div id="cartOverlay" class="overlay">
+
+        <div class="cart-modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <span class="modal-small">
+                        SEU
+                    </span>
+
+                    <h2>
+                        Pedido
+                    </h2>
+                </div>
+
+                <button id="closeCart" class="close-button">
+                    ×
+                </button>
+
+            </div>
+
+
+            <div id="cartItems" class="cart-items">
+                <!-- Itens inseridos pelo JS -->
+            </div>
+
+
+            <div id="emptyCart" class="empty-cart">
+
+                <div class="empty-icon">
+                    🧁
+                </div>
+
+                <h3>
+                    Seu pedido está vazio
+                </h3>
+
+                <p>
+                    Escolha seus doces favoritos para começar.
+                </p>
+
+                <button id="continueShopping">
+                    Ver cardápio
+                </button>
+
+            </div>
+
+
+            <!-- RESUMO -->
+
+            <div id="cartCheckout" class="cart-checkout">
+
+                <div class="checkout-line">
+                    <span>
+                        Subtotal
+                    </span>
+
+                    <strong id="checkoutTotal">
+                        R$ 0,00
+                    </strong>
+                </div>
+
+
+                <div class="checkout-divider"></div>
+
+
+                <label>
+                    Seu nome
+                </label>
+
+                <input
+                    type="text"
+                    id="customerName"
+                    placeholder="Digite seu nome">
+
+
+                <label>
+                    Observação
+                </label>
+
+                <textarea
+                    id="orderObservation"
+                    placeholder="Alguma observação? (opcional)"
+                    rows="3"></textarea>
+
+
+                <button id="whatsappButton" class="whatsapp-button">
+
+                    <span>
+                        ◉
+                    </span>
+
+                    Finalizar pedido pelo WhatsApp
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==============================
+         NOTIFICAÇÃO
+    =============================== -->
+
+    <div id="toast" class="toast">
+        Produto adicionado ao pedido!
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
