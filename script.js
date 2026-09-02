@@ -18,6 +18,63 @@ const WHATSAPP = "5564993344362";
 const products = [
 
     {
+        id: 9,
+
+        name: "Bolo fatia SNICKERS ",
+
+        description:
+            "Sabor: SNICKERS.",
+
+        price: 15,
+
+        category: "bolos",
+
+        categoryName: "bolos",
+
+        image: "snickers.jpg",
+
+        emoji: "🍰"
+    },
+
+    {
+        id: 7,
+
+        name: "Bom bom de morango cravejado ",
+
+        description:
+            "Sabor: Morango cravejado.",
+
+        price: 10,
+
+        category: "doces",
+
+        categoryName: "doces",
+
+        image: "morangocravejado.jpg",
+
+        emoji: "🍫"
+    },
+
+    {
+        id: 6,
+
+        name: "Matilda",
+
+        description:
+            "Sabor: Muito gostoso rsrs.",
+
+        price: 20,
+
+        category: "bolos",
+
+        categoryName: "bolos",
+
+        image: "matilda.jpg",
+
+        emoji: "🍰"
+    },
+
+    {
         id: 1,
 
         name: "Bolo pedaço",
@@ -115,44 +172,6 @@ const products = [
     },
 
     {
-        id: 6,
-
-        name: "Matilda",
-
-        description:
-            "Sabor: Muito gostoso rsrs.",
-
-        price: 20,
-
-        category: "bolos",
-
-        categoryName: "bolos",
-
-        image: "matilda.jpg",
-
-        emoji: "🍰"
-    },
-
-    {
-        id: 7,
-
-        name: "Bom bom de morango cravejado ",
-
-        description:
-            "Sabor: Morango cravejado.",
-
-        price: 10,
-
-        category: "doces",
-
-        categoryName: "doces",
-
-        image: "morangocravejado.jpg",
-
-        emoji: "🍫"
-    },
-
-    {
         id: 8,
 
         name: "Bolo gelado",
@@ -171,24 +190,7 @@ const products = [
         emoji: "🍰"
     },
 
-    {
-        id: 9,
-
-        name: "Bolo fatia SNICKERS ",
-
-        description:
-            "Sabor: SNICKERS.",
-
-        price: 15,
-
-        category: "bolos",
-
-        categoryName: "bolos",
-
-        image: "snickers.jpg",
-
-        emoji: "🍰"
-    },
+    
 
 
 
