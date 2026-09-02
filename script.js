@@ -31,7 +31,7 @@ const products = [
 
         categoryName: "bolos",
 
-        image: "snickers.jpg",
+        image: "snickers2.jpg",
 
         emoji: "🍰"
     },
