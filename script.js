@@ -737,7 +737,6 @@ function sendToWhatsApp() {
         );
 
         return;
-
     }
 
 
@@ -758,21 +757,19 @@ function sendToWhatsApp() {
         );
 
         return;
-
     }
 
 
     let message =
-
-        `Olá! Gostaria de fazer um pedido na Délle Doces. 🍰%0A%0A`;
-
-
-    message +=
-        `*Nome:* ${name}%0A%0A`;
+        `Olá! Gostaria de fazer um pedido na Délle Doces. 🍰\n\n`;
 
 
     message +=
-        `*Pedido:*%0A`;
+        `*Nome:* ${name}\n\n`;
+
+
+    message +=
+        `*Pedido:*\n`;
 
 
     cart.forEach(item => {
@@ -781,33 +778,49 @@ function sendToWhatsApp() {
             item.price * item.quantity;
 
 
-        message +=
+        let sabor = "";
 
-            `• ${item.quantity}x ${item.name} — ${money(total)}%0A`;
+
+        if (item.description) {
+
+            sabor = item.description
+                .replace(/^Sabor:\s*/i, "")
+                .trim()
+                .replace(/\.$/, "");
+
+        }
+
+
+        const nomeProduto =
+            sabor
+                ? `${item.name.trim()} — ${sabor}`
+                : item.name.trim();
+
+
+        message +=
+            `• ${item.quantity}x ${nomeProduto} — ${money(total)}\n`;
 
     });
 
 
     message +=
-        `%0A*Total: ${money(getCartTotal())}*`;
+        `\n*Total: ${money(getCartTotal())}*`;
 
 
     if (observation) {
 
         message +=
-
-            `%0A%0A*Observação:* ${observation}`;
+            `\n\n*Observação:* ${observation}`;
 
     }
 
 
     message +=
-
-        `%0A%0AObrigado! 💕`;
+        `\n\nObrigado! 💕`;
 
 
     const url =
-        `https://wa.me/${WHATSAPP}?text=${message}`;
+        `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}`;
 
 
     window.open(
