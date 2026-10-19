@@ -103,6 +103,10 @@
                     Doces
                 </button>
 
+                <button class="category" data-category="festa">
+                    Festa
+                </button>
+
                 <button class="category" data-category="combos">
                     Combos
                 </button>
@@ -182,6 +186,22 @@
         </footer>
 
     </main>
+
+
+    <!-- Foto completa: fecha no X, na área escura ou com Esc. -->
+    <div id="photoOverlay" class="photo-overlay" role="dialog"
+         aria-modal="true" aria-label="Foto ampliada do produto" aria-hidden="true">
+        <div class="photo-dialog">
+            <div class="photo-dialog-header">
+                <h2 id="photoTitle">Foto do produto</h2>
+                <button type="button" id="closePhoto" class="photo-close-button"
+                        aria-label="Fechar foto ampliada">×</button>
+            </div>
+            <div class="photo-full-image">
+                <img id="expandedProductPhoto" alt="Foto completa do produto">
+            </div>
+        </div>
+    </div>
 
 
     <!-- ==============================

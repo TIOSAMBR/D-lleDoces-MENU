@@ -16,6 +16,47 @@ const WHATSAPP = "5564993344362";
 ========================================= */
 
 const products = [
+{
+        id: 11,
+
+        name: "Cento de docinhos",
+
+        description:
+            "100 unidades - Pode escolher no mínimo 20 de cada sabor. Consultar sabores disponiveis no Whatssap...",
+
+        price: 150,
+
+        available: true, // Alterar para false quando o produto estiver indisponível.
+
+        category: "festa",
+
+        categoryName: "festa",
+
+        image: "docinhos.jpg",
+
+        emoji: "🍰"
+    },
+    
+    {
+        id: 10,
+
+        name: "Bolo no pote OREO ",
+
+        description:
+            "Sabor: OREO.",
+
+        price: 15,
+
+        available: true, // Alterar para false quando o produto estiver indisponível.
+
+        category: "bolos",
+
+        categoryName: "bolos",
+
+        image: "oreo.jpeg",
+
+        emoji: "🍰"
+    },
 
     {
         id: 9,
@@ -26,6 +67,8 @@ const products = [
             "Sabor: SNICKERS.",
 
         price: 15,
+
+        available: true, // Alterar para false quando o produto estiver indisponível.
 
         category: "bolos",
 
@@ -46,6 +89,8 @@ const products = [
 
         price: 10,
 
+        available: false, // Alterar para false quando o produto estiver indisponível.
+
         category: "doces",
 
         categoryName: "doces",
@@ -65,6 +110,8 @@ const products = [
 
         price: 20,
 
+        available: true, // Alterar para false quando o produto estiver indisponível.
+
         category: "bolos",
 
         categoryName: "bolos",
@@ -83,6 +130,8 @@ const products = [
             "Sabor: Cacau black.",
 
         price: 10,
+
+        available: true, // Alterar para false quando o produto estiver indisponível.
 
         category: "bolos",
 
@@ -104,6 +153,8 @@ const products = [
 
         price: 14,
 
+        available: true, // Alterar para false quando o produto estiver indisponível.
+
         category: "bolos",
 
         categoryName: "Bolos",
@@ -124,11 +175,13 @@ const products = [
 
         price: 14,
 
+        available: true, // Alterar para false quando o produto estiver indisponível.
+
         category: "bolos",
 
         categoryName: "Bolos",
 
-        image: "musse de limão.jpg",
+        image: "musse de limao.jpg",
 
         emoji: "🍰"
     },
@@ -143,11 +196,13 @@ const products = [
 
         price: 14,
 
+        available: true, // Alterar para false quando o produto estiver indisponível.
+
         category: "bolos",
 
         categoryName: "bolos",
 
-        image: "prestigio.png",
+        image: "prestigio.jpg",
 
         emoji: "🍰"
     },
@@ -161,6 +216,8 @@ const products = [
             "Sabor: Creme de ninho com geleia de morango caseira.",
 
         price: 14,
+
+        available: true, // Alterar para false quando o produto estiver indisponível.
 
         category: "bolos",
 
@@ -180,6 +237,8 @@ const products = [
             "Sabor: Cocada cremosa com ameixa.",
 
         price: 14,
+
+        available: true, // Alterar para false quando o produto estiver indisponível.
 
         category: "bolos",
 
@@ -208,6 +267,8 @@ const products = [
             "Brigadeiro artesanal, cremoso e delicioso.",
 
         price: 5,
+
+        available: true, // Alterar para false quando o produto estiver indisponível.
 
         category: "doces",
 
@@ -336,40 +397,46 @@ function renderProducts(category = "todos") {
     productsGrid.innerHTML =
         filteredProducts.map(product => {
 
+            const available = product.available !== false;
+
             return `
 
                 <article
-                    class="product-card"
+                    class="product-card ${available ? '' : 'product-unavailable'}"
                     data-id="${product.id}">
 
-                    <div class="product-image">
+                    <div class="product-image" style="--foto-url: url('${encodeURI(product.image)}');">
 
-                        <span class="product-category">
-                            ${product.categoryName}
-                        </span>
-
-
-                        <img
-                            src="${product.image}"
-                            alt="${product.name}"
-                            loading="lazy"
-                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-
-
-                        <div
-                            class="image-placeholder"
-                            style="display:none;">
-
-                            <span>
-                                ${product.emoji}
+                        <div class="product-image-meta">
+                            <span class="product-category">
+                                ${product.categoryName}
                             </span>
 
-                            <small>
-                                Délle Doces
-                            </small>
-
+                            <span class="product-availability ${available ? 'is-available' : 'is-unavailable'}">
+                                ${available ? '● Disponível' : '● Indisponível'}
+                            </span>
                         </div>
 
+                        <button
+                            type="button"
+                            class="product-photo-trigger"
+                            onclick="openProductPhoto(${product.id})"
+                            aria-label="Ver foto completa de ${product.name}">
+
+                            <img
+                                src="${product.image}"
+                                alt="${product.name}"
+                                loading="lazy"
+                                decoding="async"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+
+                            <div class="image-placeholder" style="display:none;">
+                                <span>${product.emoji}</span>
+                                <small>Délle Doces</small>
+                            </div>
+
+                            <span class="photo-zoom-hint">🔍 Ver foto</span>
+                        </button>
                     </div>
 
 
@@ -393,11 +460,12 @@ function renderProducts(category = "todos") {
 
 
                             <button
-                                class="add-product"
+                                class="add-product ${available ? '' : 'add-product-disabled'}"
                                 onclick="addToCart(${product.id})"
-                                aria-label="Adicionar ${product.name}">
+                                aria-label="${available ? `Adicionar ${product.name}` : `${product.name} indisponível`}"
+                                ${available ? '' : 'disabled'}>
 
-                                +
+                                ${available ? '+' : 'Indisponível'}
 
                             </button>
 
@@ -427,6 +495,12 @@ function addToCart(productId) {
 
 
     if (!product) return;
+
+    // Proteção adicional: produtos indisponíveis não podem ser pedidos.
+    if (product.available === false) {
+        showToast("Este produto está indisponível no momento.");
+        return;
+    }
 
 
     const existing =
@@ -475,6 +549,11 @@ function changeQuantity(productId, amount) {
 
     if (!item) return;
 
+    const product = products.find(product => product.id === productId);
+    if (amount > 0 && (!product || product.available === false)) {
+        showToast("Este produto está indisponível no momento.");
+        return;
+    }
 
     item.quantity += amount;
 
@@ -730,6 +809,21 @@ function showToast(message) {
 
 function sendToWhatsApp() {
 
+    // Confere novamente a disponibilidade antes de finalizar.
+    const unavailableIds = cart
+        .filter(item => {
+            const product = products.find(product => product.id === item.id);
+            return !product || product.available === false;
+        })
+        .map(item => item.id);
+
+    if (unavailableIds.length) {
+        cart = cart.filter(item => !unavailableIds.includes(item.id));
+        updateCart();
+        showToast("Um produto ficou indisponível e foi removido do pedido.");
+        return;
+    }
+
     if (!cart.length) {
 
         showToast(
@@ -887,6 +981,45 @@ whatsappButton.addEventListener(
 
 
 /* =========================================
+   VISUALIZADOR DE FOTOS
+========================================= */
+
+const photoOverlay = document.getElementById("photoOverlay");
+const expandedProductPhoto = document.getElementById("expandedProductPhoto");
+const photoTitle = document.getElementById("photoTitle");
+const closePhotoButton = document.getElementById("closePhoto");
+let photoPreviousFocus = null;
+
+function openProductPhoto(productId) {
+    const product = products.find(item => item.id === productId);
+    if (!product) return;
+
+    photoPreviousFocus = document.activeElement;
+    photoTitle.textContent = product.name;
+    expandedProductPhoto.src = product.image;
+    expandedProductPhoto.alt = `Foto completa de ${product.name}`;
+    photoOverlay.classList.add("open");
+    photoOverlay.setAttribute("aria-hidden", "false");
+    document.body.classList.add("photo-open");
+    closePhotoButton.focus();
+}
+
+function closeProductPhoto() {
+    if (!photoOverlay.classList.contains("open")) return;
+    photoOverlay.classList.remove("open");
+    photoOverlay.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("photo-open");
+    expandedProductPhoto.removeAttribute("src");
+
+    if (photoPreviousFocus?.isConnected) photoPreviousFocus.focus();
+}
+
+closePhotoButton.addEventListener("click", closeProductPhoto);
+photoOverlay.addEventListener("click", event => {
+    if (event.target === photoOverlay) closeProductPhoto();
+});
+
+/* =========================================
    CATEGORIAS
 ========================================= */
 
@@ -930,8 +1063,15 @@ document.addEventListener(
             event.key === "Escape"
         ) {
 
+            closeProductPhoto();
             closeCartModal();
 
+        }
+
+        if (event.key === "Tab" && photoOverlay.classList.contains("open")) {
+            // O visualizador possui um único botão: mantenha o foco nele.
+            event.preventDefault();
+            closePhotoButton.focus();
         }
 
     }
