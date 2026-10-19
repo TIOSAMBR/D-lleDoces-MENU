@@ -16,6 +16,26 @@ const WHATSAPP = "5564993344362";
 ========================================= */
 
 const products = [
+    {
+        id: 12,
+
+        name: "Bolo de Festa - 1KG",
+
+        description:
+            "O valor do kg é 80,00. - Mais informações sobre sabores e decorações no whatzap",
+
+        price: 80,
+
+        available: true, // Alterar para false quando o produto estiver indisponível.
+
+        category: "festa",
+
+        categoryName: "festa",
+
+        image: "bolo de festa.jpg",
+
+        emoji: "🍰"
+    },  
 {
         id: 11,
 
